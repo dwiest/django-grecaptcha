@@ -1,0 +1,66 @@
+<Html>
+
+<Head>
+  <Title>Google reCAPTCHA</Title>
+  <Style>
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  }
+.error-text{
+  color: #ffffff;
+  background-color: #ff0000
+  }
+  </Style>
+
+<script src="https://www.google.com/recaptcha/enterprise.js?render=6LduLfIjAAAAAId0lRFstM3qIshMk9x7LdfZ6uhd"></script>
+<script>
+function onSubmit(token) {
+  document.getElementById("recaptcha-form").submit();
+}
+</script>
+  </Head>
+
+<Body>
+
+<Div align="center">
+<H1>Google reCAPTCHA</H1>
+{% include 'header.html' %}
+
+{% if form.non_field_errors %}
+<P>
+{% for error in form.non_field_errors %}
+{{error}}<BR/>
+{% endfor %}
+{% endif %}
+
+{% if form.errors %}
+<P>
+{% for field in form %}
+  {% for error in field.errors %}
+<Div class="error-text">
+{{error}}<BR/>
+</Div>
+  {% endfor %}
+{% endfor %}
+{% endif %}
+
+{% if request.session.risk_score %}
+<P>Your risk score is {{request.session.risk_score}}
+{% endif %}
+
+<P>
+<Form method="post" action="{% url 'grecaptcha' %}" id="recaptcha-form">
+{% csrf_token %}
+<button class="g-recaptcha"
+data-sitekey="6LduLfIjAAAAAId0lRFstM3qIshMk9x7LdfZ6uhd"
+data-callback='onSubmit'
+data-action='form'>Submit</button>
+</Form>
+</Div>
+
+{% include "footer.html" %}
+</Body>
+</Html>
