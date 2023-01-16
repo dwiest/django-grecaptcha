@@ -5,7 +5,7 @@ from django.views.generic import FormView
 from .forms import GRecaptchaForm
 
 class GRecaptchaView(FormView):
-  template_name = "index.html"
+  template_name = "grecaptcha/index.html"
   success_url = '.'
   form_class = GRecaptchaForm
   page_name = 'Google reCAPTCHA'
