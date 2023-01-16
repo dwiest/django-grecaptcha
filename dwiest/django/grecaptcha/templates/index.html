@@ -1,7 +1,7 @@
 <Html>
 
 <Head>
-  <Title>Google reCAPTCHA</Title>
+  <Title>{{page_name}}</Title>
   <Style>
 .container {
   display: flex;
@@ -25,10 +25,13 @@ function onSubmit(token) {
 
 <Body>
 
-<Div align="center">
-<H1>Google reCAPTCHA</H1>
+{% block header %}
+{% with title=page_name %}
 {% include 'header.html' %}
+{% endwith %}
+{% endblock %}
 
+<Div align="center">
 {% if form.non_field_errors %}
 <P>
 {% for error in form.non_field_errors %}
