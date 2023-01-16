@@ -8,10 +8,12 @@ class GRecaptchaView(FormView):
   template_name = "index.html"
   success_url = '.'
   form_class = GRecaptchaForm
+  page_name = 'Google reCAPTCHA'
 
   def __init__(self, *args, **kwargs):
     self.response_dict = {
       'action': GRecaptchaForm.action,
+      'page_name': self.page_name,
       'site_key': settings.GOOGLE_RECAPTCHA_SITE_KEY
     }
 
