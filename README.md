@@ -2,6 +2,8 @@
 Google reCAPTCHA demo.
 Based on https://cloud.google.com/recaptcha-enterprise/docs/create-assessment
 
+This project has been integrated with <A href="https://github.com/dwiest/django-demos">django-demos</A>.
+
 Django settings
 ---------------
 Define the following in your settings.py file:
